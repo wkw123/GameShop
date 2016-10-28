@@ -1,10 +1,15 @@
 package com.example.administrator.gameshop;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/10/24.
  */
 
-public class Game {
+public class Game implements Parcelable {
     private int id;
     private String name;
     private String picture_1;
@@ -113,4 +118,52 @@ public class Game {
     public String toString() {
         return "id = " + id + " name = " + name;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(picture_1);
+        dest.writeString(picture_2);
+        dest.writeString(picture_3);
+        dest.writeString(picture_4);
+        dest.writeString(picture_5);
+        dest.writeInt(price);
+        dest.writeString(sort_1);
+        dest.writeString(sort_2);
+        dest.writeString(sort_3);
+
+    }
+    public static final Parcelable.Creator<Game> CREATOR=new Parcelable.Creator<Game>() {
+
+                     @Override
+               public Game createFromParcel(Parcel source) {
+
+                     Game game=new Game();
+                         game.id = source.readInt();
+                         game.name=source.readString();
+                         game.picture_1 = source.readString();
+                         game.picture_2 = source.readString();
+                         game.picture_3 = source.readString();
+                         game.picture_4 = source.readString();
+                         game.picture_5 = source.readString();
+                         game.price = source.readInt();
+                         game.sort_1 = source.readString();
+                         game.sort_2 = source.readString();
+                         game.sort_3 = source.readString();
+                       return game;
+                 }
+
+                @Override
+              public Game[] newArray(int size) {
+                     // TODO Auto-generated method stub
+                    return new Game[size];
+                }
+            };
+
 }

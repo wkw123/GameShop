@@ -50,7 +50,7 @@ public class GameListAdapter extends RecyclerView.Adapter<MyViewHolder> {
         Game game = gameList.get(position);
         holder.getGameName().setText(game.getName());
         holder.getGamePrice().setText(game.getPrice() + "");
-        String url = "http://192.169.60.219:8080/game_shop/gameimages/" + game.getPicture_1()+".jpg";
+        String url = "http://192.169.60.210:8080/game_shop/gameimages/" + game.getPicture_1()+".jpg";
         final ImageView gameImage = holder.getGameImage();
         if(gameImage == null){
             Log.i("mains", "gameImage is null");
